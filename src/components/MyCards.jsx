@@ -1,7 +1,9 @@
-function CreditCard({ variant }) {
-  const isPrimary = variant === 'primary';
+/* variant: 'primary' | 'deep' (darker gradient, same white-on-colour styling) | 'secondary' */
+export function CreditCard({ variant }) {
+  const isPrimary = variant !== 'secondary';
+  const tone = isPrimary ? `credit-card--primary${variant === 'deep' ? ' credit-card--deep' : ''}` : 'credit-card--secondary';
   return (
-    <article className={`credit-card ${isPrimary ? 'credit-card--primary' : 'credit-card--secondary'}`}>
+    <article className={`credit-card ${tone}`}>
       <div className="credit-card__top">
         <div>
           <p className="credit-card__label credit-card__label--balance">Balance</p>

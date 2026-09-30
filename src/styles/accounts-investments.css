@@ -477,8 +477,11 @@
   white-space: nowrap;
 }
 
+/* Mobile frame: icon starts 50px in on every card so the three rows line up */
 .app-shell--mobile .investments-stats .stat-card {
+  justify-content: flex-start;
   height: 85px;
+  padding: 0 12px 0 50px;
 }
 
 .app-shell--mobile .investments-stats .stat-card__icon {

@@ -7,6 +7,7 @@ import './styles/dashboard.css';
 import './styles/responsive-guard.css';
 import './styles/transactions.css';
 import './styles/accounts-investments.css';
+import './styles/credit-cards.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
