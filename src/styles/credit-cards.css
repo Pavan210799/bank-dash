@@ -15,8 +15,8 @@
 }
 
 /* ─── Layout ───
-   ≥700px content: Figma grid — cards 3-up, stats | list (1:2), add card | settings (2:1).
-   Narrower tablet content: cards scroll as a strip, stats + settings pair up, list and form go full width. */
+   ≥826px viewport: Figma grid — cards 3-up, stats | list (1:2), add card | settings (2:1).
+   640–825: cards scroll as a strip, stats + settings pair up, list and form go full width. */
 .cc-grid {
   display: grid;
   gap: var(--dash-row-gap, 20px) var(--dash-gap, 25px);
@@ -49,7 +49,7 @@
     'add add';
 }
 
-@container dash-main (min-width: 700px) {
+@media (min-width: 826px) {
   .app-shell--tablet .cc-grid,
   .app-shell--desktop .cc-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -124,7 +124,7 @@
   scroll-padding: 0 25px;
 }
 
-@container dash-main (min-width: 700px) {
+@media (min-width: 826px) {
   .app-shell--tablet .cc-cards__row {
     display: grid;
     overflow: visible;
@@ -273,7 +273,7 @@
   --chart-w: 170px;
 }
 
-@container dash-main (min-width: 700px) {
+@media (min-width: 826px) {
   .app-shell--tablet .cc-expense__card {
     --chart-w: 141px;
   }

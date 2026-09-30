@@ -4,6 +4,7 @@ import Transactions from './pages/Transactions';
 import Accounts from './pages/Accounts';
 import Investments from './pages/Investments';
 import CreditCards from './pages/CreditCards';
+import Loans from './pages/Loans';
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
         <Route path="/accounts" element={<Accounts />} />
         <Route path="/investments" element={<Investments />} />
         <Route path="/credit-cards" element={<CreditCards />} />
+        <Route path="/loans" element={<Loans />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
