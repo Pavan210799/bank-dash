@@ -75,10 +75,12 @@
   gap: calc(25px + 5 * var(--f));
 }
 
+/* The scroller clips on both axes, so it carries room for the card shadow and cancels it with margins */
 .app-shell--mobile .loans-stats {
   display: flex;
   gap: 15px;
-  padding: 0 25px;
+  margin: -16px 0 -22px;
+  padding: 16px 25px 22px;
   overflow-x: auto;
   scroll-snap-type: x proximity;
   scroll-padding: 0 25px;

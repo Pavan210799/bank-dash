@@ -5,9 +5,9 @@ export const navItems = [
   { id: 'investments', label: 'Investments', icon: 'economic-investment-1.svg', to: '/investments' },
   { id: 'cards', label: 'Credit Cards', icon: 'credit-card-1.svg', to: '/credit-cards' },
   { id: 'loans', label: 'Loans', icon: 'loan-1.svg', to: '/loans' },
-  { id: 'services', label: 'Services', icon: 'service-1.svg', to: '#' },
+  { id: 'services', label: 'Services', icon: 'service-1.svg', to: '/services' },
   { id: 'privileges', label: 'My Privileges', icon: 'econometrics-1.svg', to: '#' },
-  { id: 'settings', label: 'Setting', icon: 'settings-solid-1.svg', to: '#' },
+  { id: 'settings', label: 'Setting', icon: 'settings-solid-1.svg', to: '/settings' },
 ];
 
 /** Order and icon wells match Figma Group 398 */

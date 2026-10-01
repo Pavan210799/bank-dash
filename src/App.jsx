@@ -5,6 +5,8 @@ import Accounts from './pages/Accounts';
 import Investments from './pages/Investments';
 import CreditCards from './pages/CreditCards';
 import Loans from './pages/Loans';
+import Services from './pages/Services';
+import Settings from './pages/Settings';
 
 export default function App() {
   return (
@@ -16,6 +18,8 @@ export default function App() {
         <Route path="/investments" element={<Investments />} />
         <Route path="/credit-cards" element={<CreditCards />} />
         <Route path="/loans" element={<Loans />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

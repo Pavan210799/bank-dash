@@ -9,6 +9,8 @@ import './styles/transactions.css';
 import './styles/accounts-investments.css';
 import './styles/credit-cards.css';
 import './styles/loans.css';
+import './styles/services.css';
+import './styles/settings.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
