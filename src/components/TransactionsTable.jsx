@@ -1,21 +1,45 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { allTransactions, formatAmount } from '../data/transactions';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 import TxFlowIcon from './TxFlowIcon';
 import TxPaginationChevron from './TxPaginationChevron';
 
 const TABS = ['All Transactions', 'Income', 'Expense'];
+const PAGE_COUNT = 4;
+const PAGE_LOAD_MS = 550;
+const SKELETON_ROWS = 5;
 
 export default function TransactionsTable() {
   const breakpoint = useBreakpoint();
   const [tab, setTab] = useState(0);
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [batch, setBatch] = useState(0);
+  const timer = useRef(null);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  const goToPage = (next) => {
+    const target = Math.min(PAGE_COUNT, Math.max(1, next));
+    if (target === page) return;
+    setPage(target);
+    setLoading(true);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => {
+      setLoading(false);
+      setBatch((b) => b + 1);
+    }, PAGE_LOAD_MS);
+  };
 
   const rows = allTransactions.filter((row) => {
     if (tab === 1) return row.amount > 0;
     if (tab === 2) return row.amount < 0;
     return true;
   });
+
+  const rowAnim = (i) =>
+    batch > 0 ? { className: 'tx-row-in', style: { '--i': i } } : { className: '', style: undefined };
+  const skeletonRows = Array.from({ length: SKELETON_ROWS }, (_, i) => i);
 
   return (
     <section className={`section tx-table-section tx-table-section--${breakpoint}`}>
@@ -37,7 +61,7 @@ export default function TransactionsTable() {
         </div>
       </header>
 
-      <div className="section-card tx-table-card">
+      <div className="section-card tx-table-card" aria-busy={loading}>
         <div className="tx-table-wrap">
           <table className="tx-table">
             <thead>
@@ -52,8 +76,31 @@ export default function TransactionsTable() {
               </tr>
             </thead>
             <tbody>
-              {rows.map((row, i) => (
-                <tr key={`${row.id}-${i}`}>
+              {loading
+                ? skeletonRows.map((i) => (
+                    <tr key={`skel-${i}`} className="tx-skel-row" aria-hidden="true">
+                      <td>
+                        <div className="tx-table__desc">
+                          <span className="skel tx-skel-icon">
+                            <TxFlowIcon flow="in" />
+                          </span>
+                          <span className="skel skel-line tx-skel-line--lg" />
+                        </div>
+                      </td>
+                      <td><span className="skel skel-line tx-skel-line" /></td>
+                      <td><span className="skel skel-line tx-skel-line--sm" /></td>
+                      <td><span className="skel skel-line tx-skel-line" /></td>
+                      <td><span className="skel skel-line tx-skel-line" /></td>
+                      <td><span className="skel skel-line tx-skel-line--sm" /></td>
+                      <td>
+                        <span className="skel tx-skel-pill">
+                          <span className="tx-download">Download</span>
+                        </span>
+                      </td>
+                    </tr>
+                  ))
+                : rows.map((row, i) => (
+                <tr key={`${batch}-${row.id}-${i}`} {...rowAnim(i)}>
                   <td data-label="Description">
                     <div className="tx-table__desc">
                       <TxFlowIcon flow={row.flow} />
@@ -82,8 +129,25 @@ export default function TransactionsTable() {
         </div>
 
         <ul className="tx-mobile-list">
-          {rows.map((row, i) => (
-            <li key={`m-${row.id}-${i}`} className="tx-mobile-row">
+          {loading
+            ? skeletonRows.map((i) => (
+                <li key={`m-skel-${i}`} className="tx-mobile-row tx-skel-row" aria-hidden="true">
+                  <span className="skel tx-skel-icon">
+                    <TxFlowIcon flow="in" />
+                  </span>
+                  <div className="tx-mobile-row__copy tx-skel-copy">
+                    <span className="skel skel-line tx-skel-line--lg" />
+                    <span className="skel skel-line tx-skel-line--sm" />
+                  </div>
+                  <span className="skel skel-line tx-skel-line--sm" />
+                </li>
+              ))
+            : rows.map((row, i) => (
+            <li
+              key={`m-${batch}-${row.id}-${i}`}
+              className={`tx-mobile-row ${rowAnim(i).className}`.trim()}
+              style={rowAnim(i).style}
+            >
               <TxFlowIcon flow={row.flow} />
               <div className="tx-mobile-row__copy">
                 <p className="tx-mobile-row__title">{row.description}</p>
@@ -107,18 +171,18 @@ export default function TransactionsTable() {
             type="button"
             className="tx-pagination__nav tx-pagination__nav--prev"
             disabled={page <= 1}
-            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            onClick={() => goToPage(page - 1)}
           >
             <TxPaginationChevron direction="prev" />
             Previous
           </button>
           <div className="tx-pagination__pages">
-            {[1, 2, 3, 4].map((n) => (
+            {Array.from({ length: PAGE_COUNT }, (_, i) => i + 1).map((n) => (
               <button
                 key={n}
                 type="button"
                 className={`tx-pagination__page${page === n ? ' tx-pagination__page--active' : ''}`}
-                onClick={() => setPage(n)}
+                onClick={() => goToPage(n)}
                 aria-current={page === n ? 'page' : undefined}
               >
                 {n}
@@ -128,7 +192,8 @@ export default function TransactionsTable() {
           <button
             type="button"
             className="tx-pagination__nav tx-pagination__nav--next"
-            onClick={() => setPage((p) => Math.min(4, p + 1))}
+            disabled={page >= PAGE_COUNT}
+            onClick={() => goToPage(page + 1)}
           >
             Next
             <TxPaginationChevron direction="next" />
