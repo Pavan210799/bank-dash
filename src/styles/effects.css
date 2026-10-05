@@ -364,16 +364,6 @@ a.avatar {
   filter: saturate(0.7);
 }
 
-.expense-chart__label {
-  transform-box: fill-box;
-  transform-origin: center;
-  transition: scale 0.3s var(--fx-spring);
-}
-
-.expense-chart__slice--active .expense-chart__label {
-  scale: 1.12;
-}
-
 .cc-expense__center {
   font-family: var(--font-sans);
   font-size: 16px;
