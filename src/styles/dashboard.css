@@ -130,8 +130,7 @@
   font-size: 16px;
 }
 
-/* Icon SVG is a mask so it paints in exact palette colours (filter recolouring renders red in
-   Safari while the hover transform animates) */
+/* using mask so icon color works in safari */
 .nav-item__icon {
   display: block;
   width: 25px;
@@ -325,7 +324,7 @@
   z-index: 10;
 }
 
-/* Figma 185:400: menu 18×14 · title centred between menu and avatar · avatar ends at x349 */
+/* mobile header */
 .header-mobile-top {
   display: grid;
   grid-template-columns: 18px 1fr 35px;
@@ -355,7 +354,7 @@
   border-radius: 2px;
 }
 
-/* Figma: Inter SemiBold — 28/34 desktop, 25/30 tab, 20/24 mobile */
+/* page title */
 .header-title {
   margin: 0;
   font-size: 28px;
@@ -387,7 +386,7 @@
   white-space: nowrap;
 }
 
-/* Figma tab: search · 20 · settings · 20 · bell · 25 · avatar */
+/* tablet header spacing */
 .header--tablet .header-actions {
   gap: 20px;
   flex: 0 1 auto;
@@ -417,7 +416,7 @@
   height: 20px;
 }
 
-/* Figma 255px; shrinks only when the icon rail leaves too little header width */
+/* search bar width */
 .header--tablet .search-field {
   flex: 0 1 255px;
   width: 255px;
@@ -492,15 +491,13 @@
   height: 40px;
 }
 
-/* Figma tab 150:195 / 150:200 — 18px glyph in 40px circle */
+/* tablet icon size */
 .header--tablet .icon-btn img {
   width: 18px;
   height: 18px;
 }
 
-/* ─── Notifications dropdown (not in Figma) ───
-   Anchored to the bell's right edge; the bell sits ≥130px from the viewport edge, so a 320px
-   panel always fits from 640px up. The transparent backdrop catches outside clicks. */
+/* notifications dropdown */
 .notif {
   position: relative;
   flex-shrink: 0;
@@ -511,8 +508,7 @@
   box-shadow: 0 6px 16px -8px rgba(42, 16, 36, 0.35);
 }
 
-/* Backdrop is portalled to <body> above the sidebar (z 30); the header is lifted over it so the
-   top bar and the dropdown stay sharp while the page behind blurs */
+/* blurred background when dropdown is open */
 .notif__backdrop {
   position: fixed;
   inset: 0;
@@ -528,8 +524,7 @@
   to { opacity: 1; }
 }
 
-/* The header is its own stacking context, so it gets a second veil inside it; only the bell
-   and its panel (.notif--open) sit above that veil */
+/* blur the header too, keep bell sharp */
 .header:has(.notif--open) {
   z-index: 60;
 }
@@ -662,7 +657,7 @@
   container-name: dash-main;
 }
 
-/* Figma tab: content starts 25px after the sidebar's 1px divider */
+/* tablet content padding */
 .app-shell--tablet .dashboard-main {
   padding: 20px 25px 40px 26px;
 }
@@ -671,7 +666,7 @@
   padding: 22px 25px 40px;
 }
 
-/* Safe default: single column (no overlap at any width) */
+/* default single column */
 .dashboard-grid {
   display: grid;
   min-width: 0;
@@ -698,7 +693,7 @@
   grid-template-columns: 1fr;
 }
 
-/* Tablet 2-col — Figma tab: 487 + 25 + 231 content grid (743px) */
+/* tablet 2 columns */
 @container dash-main (min-width: 520px) {
   .app-shell--tablet .dashboard-grid {
     width: 100%;
@@ -709,13 +704,13 @@
       'bottom bottom';
   }
 
-  /* Quick Transfer content needs its Figma 295px; Balance History absorbs the shrink */
+  /* quick transfer needs fixed width */
   .app-shell--tablet .dashboard-row-bottom {
     grid-template-columns: minmax(295px, 295fr) minmax(0, 423fr);
   }
 }
 
-/* Desktop 2-col — Figma 1440: 730 + 30 + 350; main is ≥744px at every desktop width */
+/* desktop 2 columns */
 .app-shell--desktop .dashboard-grid {
   width: 100%;
   grid-template-columns: minmax(0, 730fr) minmax(0, 350fr);
@@ -745,7 +740,7 @@
   }
 }
 
-/* Stacked mode: cards scroll horizontally like Figma mobile/tab narrow */
+/* cards scroll sideways when narrow */
 @container dash-main (max-width: 579px) {
   .app-shell--tablet .my-cards__row,
   .app-shell--desktop .my-cards__row {
@@ -819,7 +814,7 @@
   gap: 12px;
 }
 
-/* Figma: Inter SemiBold — 22/27 desktop, 18/22 tab, 16/19 mobile */
+/* section titles */
 .section-head h2 {
   margin: 0;
   font-size: 22px;
@@ -838,7 +833,7 @@
   line-height: 19px;
 }
 
-/* Figma offsets from the heading top: desktop 5px (7px in from the right), tab 4px, mobile 1px */
+/* see all link position */
 .link-btn {
   align-self: flex-start;
   padding: 0;
@@ -901,7 +896,7 @@
   -webkit-overflow-scrolling: touch;
 }
 
-/* Figma card text is Lato (Regular labels, Semibold values); line-height 1.2 = Figma "Auto" */
+/* card text uses lato */
 .credit-card {
   border-radius: 25px;
   height: 235px;
@@ -950,7 +945,7 @@
   align-items: flex-start;
 }
 
-/* Figma: Balance 12/11px, CARD HOLDER & VALID THRU 12/10px (desktop / tab+mobile) */
+/* card label sizes */
 .credit-card__label {
   margin: 0 0 4px;
   font-size: 12px;
@@ -991,8 +986,7 @@
   height: 29px;
 }
 
-/* Figma pins VALID THRU at a fixed x from CARD HOLDER: 157px (350 card) · 119px (231 tab card)
-   · 135px (265 mobile card) — a column, not a gap after the name */
+/* space between card holder and valid thru */
 .credit-card__meta {
   display: grid;
   grid-template-columns: var(--cc-meta-col, 157px) auto;
@@ -1009,7 +1003,7 @@
   --cc-meta-col: 135px;
 }
 
-/* Figma Eddy Cusuma / 12/22: 15px desktop, 13px tab+mobile */
+/* card values */
 .credit-card__value {
   margin: 0;
   font-size: 15px;
@@ -1035,7 +1029,7 @@
   height: 51px;
 }
 
-/* Full-bleed strip pinned to the card bottom; margin-top must stay auto */
+/* card footer stays at the bottom */
 .credit-card__footer {
   margin-left: -26px;
   margin-right: -26px;
@@ -1057,7 +1051,7 @@
   border-top: 1px solid var(--color-border-card);
 }
 
-/* Figma 3778 **** **** 1234: 22px desktop, 15px tab+mobile */
+/* card number */
 .credit-card__number {
   flex: 1 1 auto;
   min-width: 0;
@@ -1072,7 +1066,7 @@
   font-size: 15px;
 }
 
-/* Mastercard mark: fixed Figma size (desktop 44×30, tab/mobile 27×18); never shrinks */
+/* mastercard circles */
 .credit-card__brand {
   display: flex;
   flex: 0 0 auto;
@@ -1110,7 +1104,7 @@
   margin-left: -9px;
 }
 
-/* Tablet cards scale down with their width; cqi is % of the 191px content box at Figma's 231px card */
+/* tablet cards scale with width */
 .app-shell--tablet .credit-card {
   container-type: inline-size;
 }
@@ -1409,7 +1403,7 @@
   padding: 17px 18px 17px 16px;
 }
 
-/* Weekly Activity — Figma 126:97 desktop, 147:347 tab, 181:101 mobile */
+/* weekly activity */
 .weekly-chart {
   --bar-w: 15px;
   --bar-gap: 12px;
@@ -1585,7 +1579,7 @@
 
 .app-shell--tablet .section-card--expense {
   height: 261px;
-  /* Figma tab card 231×261: chart 181×175 inset 25×43 */
+  /* tablet expense card */
   padding: 43px 25px;
   --expense-chart-size: 181px;
   --expense-chart-ratio: 181 / 175;
@@ -1648,7 +1642,7 @@
   height: 223px;
 }
 
-/* Balance History — plot insets from Figma: desktop 105:385, tab 150:88, mobile 181:276 */
+/* balance history */
 .balance-chart {
   --plot-inset: 35px 25px 56px 63px;
   --y-font: 13px;
@@ -1916,8 +1910,7 @@
   flex-wrap: nowrap;
 }
 
-/* Scroll container clips box-shadows at its edge; extend it into the card's 18px side
-   padding so the arrow's shadow fits, negative margins keep the Figma layout unchanged */
+/* extra space so shadows don't get cut */
 .app-shell--mobile .transfer-contacts {
   gap: 21px;
   max-width: none;
@@ -1957,7 +1950,7 @@
   flex: 0 0 auto;
 }
 
-/* Figma widths as minimums: names grow by sub-pixels across fonts/OSes instead of truncating */
+/* min widths so names don't cut off */
 .app-shell--mobile .transfer-contact[data-contact='livia-bator'] {
   min-width: 60px;
 }
@@ -2186,7 +2179,7 @@
   line-height: 15px;
 }
 
-/* ─── Desktop 1025–1440: each size interpolates tab → desktop Figma via --f (tokens.css) ─── */
+/* desktop sizes (1025 - 1440) */
 
 /* Sidebar */
 .sidebar--desktop {
@@ -2254,7 +2247,7 @@
   height: calc(40px + 10 * var(--f));
 }
 
-/* Figma 105:125 / 105:130 insets (settings 12·12, bell 13·12); tab is 11·11 */
+/* header icon spacing */
 .header--desktop .icon-btn {
   place-items: start;
   padding: 0;
@@ -2286,7 +2279,7 @@
   min-height: calc(22px + 5 * var(--f));
 }
 
-/* Figma desktop: the middle row sits 18px under its headings (20px elsewhere) */
+/* desktop middle row spacing */
 .app-shell--desktop .weekly-activity .section-head,
 .app-shell--desktop .expense-stats .section-head {
   margin-bottom: calc(16px + 2 * var(--f));
@@ -2459,7 +2452,7 @@
   --x-gap: calc(8px + 1 * var(--f));
 }
 
-/* Quick Transfer — tab group-457 → desktop group-322 */
+/* Quick Transfer */
 .app-shell--desktop .section-card--transfer {
   height: calc(220px + 56 * var(--f));
   padding: calc(31px + 4 * var(--f)) calc(15px + 10 * var(--f)) calc(15px + 10 * var(--f));
@@ -2540,7 +2533,7 @@
   justify-content: flex-start;
 }
 
-/* Narrow tablet 640–749 — expense + quick share a row; content scales with column width (cqi) */
+/* small tablet 640 - 749 */
 @media (min-width: 640px) and (max-width: 749px) {
   .app-shell--tablet .dashboard-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2730,7 +2723,7 @@
   }
 }
 
-/* Narrow tablet 750–899 — row 3 is 50/50; bottom row shares width by Figma ratio (not 50/50) */
+/* tablet 750 - 899 */
 @media (min-width: 750px) and (max-width: 899px) {
   .app-shell--tablet .dashboard-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

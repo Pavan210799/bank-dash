@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { accountsDebitCreditWeek, DEBIT_CREDIT_MAX } from '../data/accounts';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 
-/** Figma bar geometry per frame: plot width, bar width, gap inside a day pair, corner radius. */
+/* bar sizes for each screen size */
 const BAR_LAYOUT = {
   desktop: { plotW: 670, barW: 30, gap: 10, radius: 10 },
   tablet: { plotW: 451, barW: 20, gap: 8, radius: 7 },

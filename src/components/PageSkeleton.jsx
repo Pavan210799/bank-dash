@@ -1,4 +1,4 @@
-/* Each row is a grid; items: [type, span, height]. Types sketch the real block underneath. */
+/* skeleton layout for each page */
 const LAYOUTS = {
   Overview: [
     { cols: 3, items: [['cards', 2, 235], ['list', 1, 235]] },

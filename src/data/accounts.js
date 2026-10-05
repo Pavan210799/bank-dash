@@ -1,4 +1,4 @@
-/** Accounts page — Figma 101:0 / 152:269 / 185:58 */
+/* accounts page data */
 
 export const accountsSummary = [
   {
@@ -68,7 +68,7 @@ export const accountsLastTransactions = [
   },
 ];
 
-/** Bar heights in Figma px on the 1440 frame (plot band 234px). */
+/* bar heights in px */
 export const DEBIT_CREDIT_MAX = 234;
 
 export const accountsDebitCreditWeek = [

@@ -7,7 +7,7 @@ import {
 } from '../data/investments';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 
-/* Figma plot box is 420×190 on the 1440 frame; year centres sit at these x offsets */
+/* x position of each year */
 const PLOT_W = 420;
 const PLOT_H = 190;
 const X_STOPS = [19, 94, 167, 242, 317, 393].map((x) => x / PLOT_W);

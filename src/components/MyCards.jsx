@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-/* variant: 'primary' | 'deep' (darker gradient, same white-on-colour styling) | 'secondary' */
+/* variant can be primary, deep or secondary */
 export function CreditCard({ variant }) {
   const isPrimary = variant !== 'secondary';
   const tone = isPrimary ? `credit-card--primary${variant === 'deep' ? ' credit-card--deep' : ''}` : 'credit-card--secondary';

@@ -4,7 +4,6 @@ export const settingsTabs = [
   { id: 'security', label: 'Security', shortLabel: 'Security' },
 ];
 
-/* Row-major: desktop/tab pair them two per row, mobile stacks them in this order */
 export const profileFields = [
   { id: 'name', label: 'Your Name', value: 'Charlene Reed' },
   { id: 'username', label: 'User Name', value: 'Charlene Reed' },

@@ -10,7 +10,7 @@ export const navItems = [
   { id: 'settings', label: 'Setting', icon: 'settings-solid-1.svg', to: '/settings' },
 ];
 
-/** Order and icon wells match Figma Group 398 */
+/* same order as figma */
 export const recentTransactions = [
   {
     title: 'Deposit from my Card',
@@ -38,7 +38,7 @@ export const recentTransactions = [
   },
 ];
 
-/** Bar heights from Figma weekly activity (126:97 / 147:347 / 181:101), 0–500 scale */
+/* weekly activity values (0 - 500) */
 export const weeklyActivity = [
   { day: 'Sat', withdraw: 500, deposit: 256 },
   { day: 'Sun', withdraw: 365, deposit: 138 },

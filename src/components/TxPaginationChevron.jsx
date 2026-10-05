@@ -1,4 +1,4 @@
-/** Figma pagination chevrons: desktop 105:418 / 105:415 (6×12); tablet-mobile 152:263 / 150:606 (5×10). */
+/* arrow icons for pagination */
 
 const STROKE = 'currentColor';
 
@@ -7,7 +7,6 @@ const DESKTOP = {
   next: 'M0.707031 12.7072L6.70703 6.70715L0.707031 0.707153',
 };
 
-/* Crop to the path geometry (6×12 / 5×10) so the layout box equals the Figma vector box; stroke overflows */
 const DESKTOP_VIEWBOX = {
   prev: '1.41418 0.707153 6 12',
   next: '0.707031 0.707153 6 12',

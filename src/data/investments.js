@@ -1,4 +1,4 @@
-/** Investments page — Figma 104:60 / 152:1134 / 192:165 */
+/* investments page data */
 
 export const investmentsSummary = [
   {
@@ -28,10 +28,10 @@ export const INVESTMENT_CHART_MAX = 40000;
 export const INVESTMENT_CHART_TICKS = [40000, 30000, 20000, 10000, 0];
 export const INVESTMENT_YEARS = ['2016', '2017', '2018', '2019', '2020', '2021'];
 
-/* Point values read off the Figma polyline (104:239) against the $0–$40,000 grid */
+/* values for the yearly chart */
 export const investmentsYearly = [6000, 24000, 16000, 37500, 21000, 29500];
 
-/* Figma curve 104:269 in its 419×190 plot box (offset 0.5, 24.5 from the top grid line) */
+/* line chart path */
 export const MONTHLY_REVENUE_PATH =
   'M1.5 112.5C8.06311 106 12.6068 100.5 26.7427 100.5C40.8786 100.5 45.4223 70.0008 65.6165 67.5008C85.8107 65.0009 92.8786 110 113.073 109C133.267 108 130.238 45.0012 150.937 38.5013C171.636 32.0015 179.714 11.0018 199.908 10.0019C220.102 9.00189 224.646 67.5008 244.335 67.5008C264.024 67.5008 269.578 29.5015 287.248 29.5015C304.917 29.5015 314.51 51.0011 335.714 51.5011C356.917 51.5011 357.422 93.5003 376.607 93.5003C395.791 93.5003 403.869 1.00202 417.5 1.50202';
 

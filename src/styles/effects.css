@@ -1,12 +1,10 @@
-/* Motion layer — loaded last. Entrance animations use the individual `translate`/`scale`/`rotate`
-   properties so they never fight the `transform` used by hover states. Charts measure themselves
-   with getBoundingClientRect, so their containers only ever translate, never scale. */
+/* animations and hover effects */
 
 :root {
   --fx-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
   --fx-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --fx-smooth: cubic-bezier(0.22, 1, 0.36, 1);
-  /* Kept tight (≤ 22px reach) so lifted cards fit inside scroll strips and padded cards */
+  /* small shadows so they don't get cut */
   --fx-shadow-hover: 0 12px 24px -10px rgba(216, 17, 89, 0.26), 0 4px 10px -4px rgba(74, 25, 66, 0.1);
   --fx-shadow-glow: 0 10px 26px -10px rgba(216, 17, 89, 0.18), 0 4px 12px -4px rgba(74, 25, 66, 0.06);
   --fx-tint: color-mix(in srgb, var(--color-primary) 5%, transparent);
@@ -87,7 +85,7 @@
   to { background-position: 0 0; }
 }
 
-/* ─── Page entrance (after the skeleton) ─── */
+/* Page entrance */
 .fx-enter :is(
     .section,
     .stat-card,
@@ -120,7 +118,7 @@
 .fx-enter :is(.section, .stat-card, .svc-stat, .credit-card, .priv-item, .svc-row, .transaction-item, .activity-list__row, .loans-table__row, .tx-mobile-row, .tx-table tbody tr, .cc-list__row, .investments-portfolio__row):nth-child(6) { animation-delay: 0.35s; }
 .fx-enter :is(.section, .stat-card, .svc-stat, .credit-card, .priv-item, .svc-row, .transaction-item, .activity-list__row, .loans-table__row, .tx-mobile-row, .tx-table tbody tr, .cc-list__row, .investments-portfolio__row):nth-child(n + 7) { animation-delay: 0.42s; }
 
-/* ─── Shell intro (first paint only) ─── */
+/* Shell intro */
 .fx-intro .sidebar-brand img {
   animation: fx-spin-in 0.8s var(--fx-spring) backwards;
 }
@@ -155,7 +153,7 @@
   animation: fx-drop 0.45s var(--fx-ease) backwards;
 }
 
-/* ─── Sidebar ─── */
+/* Sidebar */
 .nav-item,
 .nav-item__icon,
 .nav-item span {
@@ -170,7 +168,7 @@
   transition: transform 0.6s var(--fx-spring);
 }
 
-/* ─── Header ─── */
+/* Header */
 .icon-btn,
 .avatar,
 .search-field,
@@ -200,7 +198,7 @@ a.avatar {
   transform: scale(1.15) rotate(-10deg);
 }
 
-/* ─── Interactive base transitions ─── */
+/* Interactive base transitions */
 :is(
     .stat-card,
     .svc-stat,
@@ -274,7 +272,7 @@ a.avatar {
     color 0.2s ease;
 }
 
-/* Primary buttons carry a light sheen that sweeps across on hover */
+/* shine effect on buttons */
 :is(.send-btn, .cc-add__submit, .set-save) {
   background-image: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
   background-size: 250% 100%;
@@ -317,7 +315,7 @@ a.avatar {
   animation: fx-grow-x 1.2s var(--fx-ease) 0.4s backwards;
 }
 
-/* ─── Charts ─── */
+/* Charts */
 .balance-chart__line,
 .investments-chart__line {
   stroke-dasharray: 1;
@@ -354,7 +352,7 @@ a.avatar {
   animation: fx-pie-in 0.9s var(--fx-ease) backwards;
 }
 
-/* Pies: the hovered slice glides out, the rest dim, the label grows */
+/* pie chart hover */
 .expense-chart__slice,
 .cc-expense__slice {
   transition: transform 0.35s var(--fx-spring), opacity 0.25s ease, filter 0.25s ease;
@@ -411,7 +409,7 @@ a.avatar {
   animation: fx-pulse 1.3s ease-out infinite;
 }
 
-/* ─── Hover (pointer devices only, so taps don't leave sticky states) ─── */
+/* hover effects (only on mouse devices) */
 @media (hover: hover) {
   /* Sidebar */
   .nav-item:hover .nav-item__icon {
@@ -469,7 +467,7 @@ a.avatar {
     translate: 120% 0;
   }
 
-  /* Large containers (charts, tables, forms) glow without moving so plots stay steady */
+  /* big cards glow instead of moving */
   :is(.section-card, .set-card, .loans-table, .tx-table-card):hover {
     box-shadow: var(--fx-shadow-glow);
   }
@@ -529,8 +527,7 @@ a.avatar {
     box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-primary);
   }
 
-  /* Figma's selected contact (Livia Bator · CEO) is set heavier; a stroke thickens the glyphs
-     without widening them, so the fixed-width contact columns don't reflow or ellipsise */
+  /* selected contact text is bolder */
   .transfer-contact:hover :is(.transfer-name, .transfer-role) {
     -webkit-text-stroke: 0.45px currentColor;
   }
@@ -636,9 +633,7 @@ a.avatar {
   transform: scale(0.96);
 }
 
-/* ─── Room for lifted cards inside scroll strips ───
-   A scroller clips on both axes, so each strip gets padding for the hover lift + shadow
-   (6px up, 22px down, 14px sideways) and equal negative margins keep the layout in place. */
+/* extra space for cards lifting in scroll rows */
 .app-shell--mobile .my-cards__row,
 .app-shell--mobile .my-cards--transactions .my-cards__row {
   width: calc(100% + 50px) !important;
@@ -677,7 +672,7 @@ a.avatar {
   padding-top: 10px;
 }
 
-/* Mobile arrow sits 18px from the clipped card edge, so its shadow reach stays under that */
+/* smaller shadow on mobile arrow */
 .app-shell--mobile .transfer-next {
   box-shadow: 3px 3px 14px -2px rgba(231, 228, 232, 0.8);
 }
@@ -689,12 +684,12 @@ a.avatar {
   }
 }
 
-/* Receipt cells clip (ellipsis); let the Download button's hover shadow out */
+/* let download button shadow show */
 .tx-table tbody td:has(.tx-download) {
   overflow: visible;
 }
 
-/* ─── Loading skeleton ─── */
+/* Loading skeleton */
 .page-skel {
   display: grid;
   gap: 25px;
@@ -769,8 +764,7 @@ a.avatar {
   gap: 14px;
 }
 
-/* ─── Transactions table: page-change skeleton + row re-entry ───
-   Placeholders wrap the real icon / button (hidden) so rows keep their exact height */
+/* transactions table loading */
 .tx-skel-row {
   pointer-events: none;
 }

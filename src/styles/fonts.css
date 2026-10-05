@@ -1,4 +1,4 @@
-/* Inter 3.19 (OFL) — the version Figma renders with; Inter 4 has different digit widths and spacing. */
+/* inter font */
 @font-face {
   font-family: 'BankDash Inter';
   font-style: normal;
@@ -39,8 +39,7 @@
     url('../assets/fonts/inter3-700.woff') format('woff');
 }
 
-/* Lato 2.0 (OFL) — Figma card text uses Lato Regular / Semibold.
-   Unique family name so a locally installed Lato 1.x never replaces the bundled files. */
+/* lato font for cards */
 @font-face {
   font-family: 'BankDash Lato';
   font-style: normal;

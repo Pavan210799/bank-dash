@@ -5,7 +5,7 @@ import { useBreakpoint } from '../hooks/useBreakpoint';
 const Y_MAX = 500;
 const Y_TICKS = [500, 400, 300, 200, 100, 0];
 
-/** Figma weekly plot band + grid (group-41 / group-442 / group-706). */
+/* chart size and grid lines */
 const WEEKLY_LAYOUT = {
   desktop: {
     gridW: 631,
@@ -42,7 +42,7 @@ const WEEKLY_LAYOUT = {
   },
 };
 
-/** Bar-group center X in the same coordinate system as gridStart / gridW. */
+/* center x of each bar group */
 const BAR_CENTERS = {
   desktop: [82, 172, 262, 352, 442, 532, 622],
   tablet: [56, 115, 174, 233, 292, 351, 410],

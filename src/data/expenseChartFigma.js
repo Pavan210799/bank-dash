@@ -1,4 +1,4 @@
-/** Figma expense chart vectors — desktop (126:96), tablet (147:346), mobile (181:274). */
+/* expense pie chart paths */
 
 function frame(w, h, slices, pad = 0) {
   return {
@@ -44,7 +44,7 @@ const sliceMeta = {
   },
 };
 
-/** Desktop — group 269×260 */
+/* desktop */
 export const expenseChartDesktop = frame(269, 260, [
   {
     ...sliceMeta.entertainment,
@@ -87,7 +87,7 @@ export const expenseChartDesktop = frame(269, 260, [
   },
 ]);
 
-/** Tablet 1024 — group 181×175 (147:345) */
+/* tablet */
 export const expenseChartTablet = frame(181, 175, [
   {
     ...sliceMeta.entertainment,
@@ -130,7 +130,7 @@ export const expenseChartTablet = frame(181, 175, [
   },
 ]);
 
-/** Mobile — group 203×196 (181:91) */
+/* mobile */
 export const expenseChartMobile = frame(203, 196, [
   {
     ...sliceMeta.entertainment,

@@ -1,7 +1,4 @@
-/**
- * Viewport fallback for mobile shell only.
- * Grid columns are driven by @container dash-main in dashboard.css.
- */
+/* mobile layout fallback */
 @media (max-width: 639px) {
   .app-shell--mobile .my-cards__row {
     width: calc(100% + 25px);
@@ -11,7 +8,7 @@
     box-sizing: border-box;
   }
 
-  /* Figma 169:3352: 22px from a card's bottom to the next section title */
+  /* space between sections */
   .app-shell--mobile .dashboard-grid {
     gap: 22px;
     grid-template-columns: 1fr;

@@ -1,5 +1,4 @@
-/* Loans — Figma 101:677 (1440) / 158:819 (1024) / 196:681 (375)
-   Desktop values interpolate tab → desktop with --f (see tokens.css). */
+/* loans page */
 
 .loans-main {
   container-type: inline-size;
@@ -47,9 +46,7 @@
   padding: 0 25px;
 }
 
-/* ─── Stat cards ───
-   Figma: 4-up 255×120 / 167×90; mobile scrolls 230×85 cards.
-   640–825 pairs them up 2×2. */
+/* Stat cards */
 .loans-stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -63,7 +60,7 @@
   }
 }
 
-/* Icon rail widths leave 157–215px cards; a tighter gap keeps "Choose Money" clear */
+/* smaller gap with icon sidebar */
 @media (min-width: 826px) and (max-width: 999px) {
   .app-shell--tablet .loans-stats {
     gap: 20px;
@@ -75,7 +72,7 @@
   gap: calc(25px + 5 * var(--f));
 }
 
-/* The scroller clips on both axes, so it carries room for the card shadow and cancels it with margins */
+/* space for card shadows */
 .app-shell--mobile .loans-stats {
   display: flex;
   gap: 15px;
@@ -185,9 +182,7 @@
   line-height: 19px;
 }
 
-/* ─── Active loans table ───
-   Column widths are the Figma x-offsets: 58/115/117/104/106/123/80 of 703 (tab),
-   100/168/174/171/147/172/118 of 1050 (desktop), 106/109/70 of 285 (mobile). */
+/* Active loans table */
 .loans-table {
   --loans-cols: 58fr 115fr 117fr 104fr 106fr 123fr minmax(80px, 80fr);
   padding: 22px 20px;
@@ -260,8 +255,7 @@
   outline-offset: 2px;
 }
 
-/* 640–825: seven columns crowd the narrow tablet content, so SL No and Interest rate
-   drop out (as the mobile frame drops columns) and Total moves onto its own line. */
+/* small tablet: hide some columns */
 @media (min-width: 640px) and (max-width: 825px) {
   .app-shell--tablet .loans-table {
     --loans-cols: 115fr 117fr 104fr 123fr minmax(80px, 80fr);
@@ -312,7 +306,7 @@
   font-size: calc(12px + 3 * var(--f));
 }
 
-/* Mobile: Loan Money · Left to repay · Repay; Total label above its values */
+/* mobile table */
 .app-shell--mobile .loans-table {
   --loans-cols: 106fr 109fr 70px;
   margin: 0 25px;

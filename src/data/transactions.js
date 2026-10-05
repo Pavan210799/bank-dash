@@ -1,6 +1,6 @@
-/** Rows from Figma transaction table (105:0 / 150:111 / 181:279). Amounts in dollars. */
+/* transactions list */
 
-/** Bar heights are relative; Dec matches the Figma $12,500 label */
+/* bar heights for my expense chart */
 export const expenseByMonth = [
   { month: 'Aug', value: 93 },
   { month: 'Sep', value: 142 },

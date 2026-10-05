@@ -1,4 +1,4 @@
-/** Figma logo text 105:468 ("BankDash." in Mont Heavy), outlined so it renders identically everywhere. */
+/* logo text as svg */
 export default function BrandWordmark() {
   return (
     <svg

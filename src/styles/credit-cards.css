@@ -1,5 +1,4 @@
-/* Credit Cards — Figma 101:371 (1440) / 158:118 (1024) / 196:190 (375)
-   Desktop values interpolate tab → desktop with --f (see tokens.css). */
+/* credit cards page */
 
 .cc-main {
   container-type: inline-size;
@@ -14,9 +13,7 @@
   padding: 22px 0 40px;
 }
 
-/* ─── Layout ───
-   ≥826px viewport: Figma grid — cards 3-up, stats | list (1:2), add card | settings (2:1).
-   640–825: cards scroll as a strip, stats + settings pair up, list and form go full width. */
+/* Layout */
 .cc-grid {
   display: grid;
   gap: var(--dash-row-gap, 20px) var(--dash-gap, 25px);
@@ -86,14 +83,13 @@
   margin: 0 25px;
 }
 
-/* ─── My Cards ─── */
+/* My Cards */
 .cc-cards__row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--dash-gap, 25px);
 }
 
-/* Strip: tab frame's 231×170 cards (narrow tablet) / mobile frame's 265×170 cards */
 .app-shell--tablet .cc-cards__row,
 .app-shell--mobile .cc-cards__row {
   display: flex;
@@ -141,7 +137,7 @@
   background: linear-gradient(135.5deg, var(--color-accent), var(--color-heading));
 }
 
-/* Figma card: 231×170 tab → 350×225 desktop; meta row sits 73 / 91px from the top */
+/* card size */
 .cc-cards .credit-card__meta {
   margin-top: auto;
 }
@@ -158,7 +154,7 @@
   margin-top: calc(16px + 13 * var(--f));
 }
 
-/* ─── Shared icon tile ─── */
+/* Shared icon tile */
 .cc-tile {
   flex: 0 0 auto;
   width: var(--tile, 45px);
@@ -173,7 +169,7 @@
   height: var(--glyph, 20px);
 }
 
-/* ─── Card Expense Statistics (tab 231×231 · desktop 350×310 · mobile 325×300) ─── */
+/* Card Expense Statistics */
 .cc-expense__card {
   --chart-w: 141px;
   --dot: 12px;
@@ -268,7 +264,7 @@
   margin-top: calc(10px + 6 * var(--f));
 }
 
-/* Paired with Card Setting on narrow tablets: grow the chart into the taller card */
+/* small tablet: bigger chart */
 .app-shell--tablet .cc-expense__card {
   --chart-w: 170px;
 }
@@ -279,7 +275,7 @@
   }
 }
 
-/* ─── Card List (tab 487×69 · desktop 730×90 · mobile 325×69) ─── */
+/* Card List */
 .cc-list__rows {
   --tile: 45px;
   --tile-r: 12px;
@@ -402,7 +398,7 @@
   display: none;
 }
 
-/* ─── Add New Card (tab 487×321 · desktop 730×440 · mobile 325×527) ─── */
+/* Add New Card */
 .cc-add__card {
   --intro-font: 12px;
   --intro-lh: 22px;
@@ -558,7 +554,7 @@
   width: auto;
 }
 
-/* ─── Card Setting (tab 231×321 · desktop 350×440 · mobile 325×325) ─── */
+/* Card Setting */
 .cc-settings__card {
   --tile: 45px;
   --tile-r: 12px;
@@ -648,7 +644,7 @@
   padding: 20px;
 }
 
-/* Narrow tablet pairing: stats + settings share a row; centre the setting list vertically */
+/* small tablet: stats and settings in one row */
 .app-shell--tablet .cc-settings__card {
   display: flex;
   flex-direction: column;

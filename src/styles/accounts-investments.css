@@ -1,4 +1,4 @@
-/* Accounts & Investments — Figma 101:0 / 152:269 / 185:58 & 104:60 / 152:1134 / 192:165 */
+/* accounts and investments pages */
 
 .accounts-main,
 .investments-main {
@@ -20,7 +20,7 @@
   padding-top: 25px;
 }
 
-/* Mobile frame: 22px card → title, 19px title, 12px title → card */
+/* mobile spacing */
 .app-shell--mobile .accounts-grid {
   row-gap: 22px;
 }
@@ -30,7 +30,7 @@
   min-height: 19px;
 }
 
-/* ─── Stat cards ─── */
+/* Stat cards */
 .stat-card {
   display: flex;
   align-items: center;
@@ -145,7 +145,7 @@
   line-height: calc(22px + 8 * var(--f));
 }
 
-/* Accounts stat cards: Figma centres icon + copy inside 255×120 / 167×90 / 155×85 */
+/* accounts stat cards */
 .accounts-stats .stat-card {
   justify-content: center;
   gap: 12px;
@@ -236,7 +236,7 @@
   line-height: calc(19px + 11 * var(--f));
 }
 
-/* ─── Accounts grid ─── */
+/* Accounts grid */
 .accounts-grid {
   display: grid;
   gap: var(--dash-row-gap, 20px) var(--dash-gap, 25px);
@@ -293,7 +293,6 @@
 }
 
 @media (min-width: 640px) and (max-width: 825px) {
-  /* Card column is half width until 300px, then the chart takes the extra space */
   .app-shell--tablet .accounts-grid {
     grid-template-columns: min(calc((100% - var(--dash-gap, 25px)) / 2), 300px) minmax(0, 1fr);
     grid-template-areas:
@@ -307,7 +306,7 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Credit card keeps the 231×170 tab proportions; contents scale with its width */
+  /* credit card scales with its width */
   .app-shell--tablet .accounts-grid .accounts-card .credit-card {
     height: auto;
     aspect-ratio: 231 / 170;
@@ -364,7 +363,7 @@
     margin-left: -4.71cqi;
   }
 
-  /* Chart card matches the credit card height; the plot absorbs the difference */
+  /* chart card same height as credit card */
   .app-shell--tablet .accounts-debit__summary {
     display: none;
   }
@@ -400,8 +399,7 @@
   }
 }
 
-/* ─── Investments grid ───
-   Rows: stats (3 equal) · charts 50/50 (540|540, 359|359) · lists 635|445 desktop, 423|295 tab */
+/* Investments grid */
 .investments-grid,
 .investments-row {
   display: grid;
@@ -445,14 +443,14 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* 423:295 (tab) and 635:445 (desktop) are the same 0.59 split */
+  /* same split on tablet and desktop */
   .app-shell--tablet .investments-row--lists,
   .app-shell--desktop .investments-row--lists {
     grid-template-columns: minmax(0, 423fr) minmax(0, 295fr);
   }
 }
 
-/* Investments stat cards: icon + copy centred in 350×120 / 231×90 / 325×85 */
+/* investments stat cards */
 .investments-stats .stat-card {
   justify-content: center;
   gap: 12px;
@@ -480,7 +478,7 @@
   white-space: nowrap;
 }
 
-/* Mobile frame: icon starts 50px in on every card so the three rows line up */
+/* mobile stat cards */
 .app-shell--mobile .investments-stats .stat-card {
   justify-content: flex-start;
   height: 85px;
@@ -516,8 +514,7 @@
   line-height: calc(19px + 5 * var(--f));
 }
 
-/* 640–825: the 1-column stack stretched every card; stats become 3 compact tiles
-   and stacked charts scale their height with width instead of staying 226px */
+/* small tablet layout */
 @media (min-width: 640px) and (max-width: 825px) {
   .app-shell--tablet .investments-row--charts,
   .app-shell--tablet .investments-row--lists {
@@ -551,7 +548,7 @@
   }
 }
 
-/* ─── Activity lists (Last Transaction / Invoices Sent) ─── */
+/* Activity lists */
 .activity-list {
   --icon: 40px;
   --icon-r: 15px;
@@ -742,7 +739,7 @@
   color: var(--color-nav-muted);
 }
 
-/* ─── Section cards (accounts) ─── */
+/* Section cards */
 .accounts-last,
 .accounts-debit,
 .accounts-invoices {
@@ -797,7 +794,7 @@
   padding: 0 20px 0 0;
 }
 
-/* Figma 192:35: mobile Accounts card is a 325×197 scale-up of the desktop card, not the 265 strip card */
+/* bigger card on mobile accounts page */
 .app-shell--mobile .accounts-card .credit-card {
   --cc-meta-col: 164px;
   height: 197px;
@@ -863,7 +860,7 @@
   max-width: none;
 }
 
-/* ─── Debit / credit chart (SVG) ─── */
+/* Debit / credit chart */
 .accounts-debit__card {
   padding: 18px 18px 17px;
 }
@@ -1055,7 +1052,7 @@
   line-height: calc(15px + 2 * var(--f));
 }
 
-/* ─── Investment charts (tab 359×226 · desktop 540×282 · mobile 325×225) ─── */
+/* Investment charts */
 .investments-chart__card {
   --chart-color: var(--color-primary);
   --ylab-w: 52px;
@@ -1170,7 +1167,7 @@
   transform: translateX(-50%);
 }
 
-/* ─── My Investment: one card per row (tab 423×69 · desktop 635×90 · mobile 325×69) ─── */
+/* My Investment */
 .investments-portfolio__list {
   --icon: 45px;
   --tile-r: 15px;
@@ -1271,7 +1268,7 @@
     calc(12px + 3 * var(--f));
 }
 
-/* Mobile frame: name + category and the return figure only */
+/* mobile: hide extra columns */
 .app-shell--mobile .investments-portfolio__list {
   --tile-r: 12px;
   --title-font: 14px;
@@ -1296,7 +1293,7 @@
   line-height: 15px;
 }
 
-/* ─── Trending stock (tab 295×227 · desktop 445×300 · mobile 325×213) ─── */
+/* Trending stock */
 .investments-trending__card {
   --cols: 53fr 79fr 75fr 52fr;
   --font: 12px;
@@ -1371,7 +1368,7 @@
   padding-top: calc(9px + 4 * var(--f));
 }
 
-/* 640–825: full-width rows and table get the mobile frame's larger type */
+/* small tablet: bigger text */
 @media (min-width: 640px) and (max-width: 825px) {
   .app-shell--tablet .investments-portfolio__list {
     --title-font: 14px;
@@ -1386,7 +1383,7 @@
   }
 }
 
-/* ─── Mobile section padding ─── */
+/* Mobile section padding */
 @media (max-width: 639px) {
   .accounts-grid .section-head,
   .investments-grid .section-head {
@@ -1417,7 +1414,7 @@
   }
 }
 
-/* Section titles — match dashboard / transactions (22 / 18 / 16) */
+/* section titles */
 .accounts-grid .section-head h2,
 .investments-grid .section-head h2 {
   font-size: 22px;

@@ -1,19 +1,6 @@
 import { useEffect, useState } from 'react';
 
-/**
- * Chrome (sidebar, header, type scale) by viewport:
- *
- * | Viewport      | Mode    |
- * |---------------|---------|
- * | < 640px       | mobile  |
- * | 640 – 1024px  | tablet  |
- * | > 1024px      | desktop |
- *
- * Nav: full labeled sidebar (1000–1024 tablet, all desktop) | icon rail (640–999)
- * | drawer (mobile).
- * Dashboard grid: @container on .dashboard-main; viewport 640–749 / 750–899 splits
- * narrow tablet rows (see dashboard.css).
- */
+/* mobile < 640, tablet 640 - 1024, desktop > 1024 */
 export function useBreakpoint() {
   const [breakpoint, setBreakpoint] = useState(getBreakpoint);
 
@@ -26,7 +13,6 @@ export function useBreakpoint() {
   return breakpoint;
 }
 
-/** Sidebar chrome within tablet/desktop widths (layout breakpoint stays separate). */
 export function useNavMode() {
   const [navMode, setNavMode] = useState(getNavMode);
 
@@ -39,7 +25,7 @@ export function useNavMode() {
   return navMode;
 }
 
-/** Tablet widths up to compactMax use the icon rail; mobile uses the hamburger drawer. */
+/* tablet uses icon sidebar, mobile uses menu drawer */
 export const NAV_BREAKPOINTS = {
   compactMin: 640,
   compactMax: 999,
@@ -57,12 +43,12 @@ function getBreakpoint() {
   if (typeof window === 'undefined') return 'tablet';
   const w = window.innerWidth;
   if (w < BREAKPOINTS.tabletMin) return 'mobile';
-  /* 1024 and below = tablet (Figma tab); desktop only above 1024 */
+  /* 1024 and below is tablet */
   if (w <= BREAKPOINTS.tabletMax) return 'tablet';
   return 'desktop';
 }
 
-/** full = labeled sidebar | compact = icon rail | drawer = off-canvas + menu */
+/* full / compact / drawer sidebar */
 function getNavMode() {
   if (typeof window === 'undefined') return 'full';
   const w = window.innerWidth;

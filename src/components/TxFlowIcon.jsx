@@ -1,4 +1,4 @@
-/** Figma: expense 105:187 / income 105:240 (30×30); tablet 152:144 / 150:619 (20×20). */
+/* income / expense arrow icons */
 
 const FILL = '#718EBF';
 
@@ -57,7 +57,7 @@ function TabletIcon({ spec }) {
   );
 }
 
-/** `out` = expense (arrow down); `in` = income (arrow up). */
+/* out = expense, in = income */
 export default function TxFlowIcon({ flow }) {
   const key = flow === 'in' ? 'in' : 'out';
 

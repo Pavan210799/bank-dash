@@ -2,8 +2,7 @@ import { useLayoutEffect, useRef, useState } from 'react';
 import { balanceHistory } from '../data/dashboard';
 import { useBreakpoint } from '../hooks/useBreakpoint';
 
-/* Figma desktop curve (105:385) in its own 547×155 box; the area closes at y 177.
-   Tab and mobile frames use this same shape, only scaled. */
+/* curve path for the balance chart */
 const CURVE_W = 547;
 const CURVE_AREA_H = 177;
 const CURVE_LINE =
@@ -51,9 +50,7 @@ export default function BalanceHistory() {
   const plotRef = useRef(null);
   const { w, h } = usePlotSize(plotRef);
 
-  /* Plot is 160px tall on tab/mobile and 185px on the 1440 frame: the curve sits
-     13px (tab) / 14px (mobile) below the top grid line vs 5px on desktop, and the fill
-     ends 0 / -1 / 3px above the baseline. */
+  /* plot height is different on desktop */
   const t = Math.min(Math.max((h - 160) / 25, 0), 1);
   const isMobile = breakpoint === 'mobile';
   const top = isMobile ? 14 : 13 - 8 * t;

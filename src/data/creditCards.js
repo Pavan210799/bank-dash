@@ -1,8 +1,8 @@
-/** Credit Cards page — Figma 101:371 / 158:118 / 196:190 */
+/* credit cards page data */
 
 export const creditCardVariants = ['primary', 'deep', 'secondary'];
 
-/* Quadrant radii from the Figma polar chart (200×198 box, centre 93,107; inner ring r≈51) */
+/* radius of each pie slice */
 export const cardExpenseSlices = [
   { id: 'dbl', label: 'DBL Bank', start: 180, end: 270, r: 93, fill: '#E11D48', inner: '#BE123C' },
   { id: 'abm', label: 'ABM Bank', start: 270, end: 360, r: 107, fill: '#9D174D', inner: '#831843' },
