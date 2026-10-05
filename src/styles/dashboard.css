@@ -860,16 +860,22 @@
   height: 29px;
 }
 
+/* Figma pins VALID THRU at a fixed x from CARD HOLDER: 157px (350 card) · 119px (231 tab card)
+   · 135px (265 mobile card) — a column, not a gap after the name */
 .credit-card__meta {
-  display: flex;
-  gap: 32px;
+  display: grid;
+  grid-template-columns: var(--cc-meta-col, 157px) auto;
+  justify-content: start;
   margin-top: 20px;
 }
 
 .app-shell--tablet .credit-card__meta,
 .app-shell--mobile .credit-card__meta {
   margin-top: 12px;
-  gap: 24px;
+}
+
+.app-shell--mobile .credit-card {
+  --cc-meta-col: 135px;
 }
 
 /* Figma Eddy Cusuma / 12/22: 15px desktop, 13px tab+mobile */
@@ -1001,8 +1007,8 @@
   white-space: nowrap;
 }
 
-.app-shell--tablet .credit-card__meta {
-  gap: min(24px, 12.57cqi);
+.app-shell--tablet .credit-card {
+  --cc-meta-col: min(119px, 62.3cqi);
 }
 
 .app-shell--tablet .credit-card__chip {
@@ -2197,7 +2203,10 @@
 
 .app-shell--desktop .credit-card__meta {
   margin-top: calc(12px + 8 * var(--f));
-  gap: calc(24px + 8 * var(--f));
+}
+
+.app-shell--desktop .credit-card {
+  --cc-meta-col: calc(119px + 38 * var(--f));
 }
 
 .app-shell--desktop .credit-card__value {

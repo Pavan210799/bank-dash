@@ -1,13 +1,21 @@
 /** Rows from Figma transaction table (105:0 / 150:111 / 181:279). Amounts in dollars. */
 
+/** Bar heights are relative; Dec matches the Figma $12,500 label */
 export const expenseByMonth = [
-  { month: 'Aug', value: 93, highlight: false },
-  { month: 'Sep', value: 142, highlight: false },
-  { month: 'Oct', value: 96, highlight: false },
-  { month: 'Nov', value: 49, highlight: false },
-  { month: 'Dec', value: 129, highlight: true },
-  { month: 'Jan', value: 88, highlight: false },
+  { month: 'Aug', value: 93 },
+  { month: 'Sep', value: 142 },
+  { month: 'Oct', value: 96 },
+  { month: 'Nov', value: 49 },
+  { month: 'Dec', value: 129 },
+  { month: 'Jan', value: 88 },
 ];
+
+export const expensePeakValue = 129;
+export const expensePeakAmount = 12500;
+
+export function expenseAmountForValue(value) {
+  return Math.round((expensePeakAmount * value) / expensePeakValue / 500) * 500;
+}
 
 export const allTransactions = [
   {

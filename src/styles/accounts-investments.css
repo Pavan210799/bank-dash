@@ -337,7 +337,10 @@
 
   .app-shell--tablet .accounts-card .credit-card__meta {
     margin-top: 6.28cqi;
-    gap: 12.57cqi;
+  }
+
+  .app-shell--tablet .accounts-card .credit-card {
+    --cc-meta-col: 62.3cqi;
   }
 
   .app-shell--tablet .accounts-card .credit-card__chip {
