@@ -132,24 +132,45 @@
 }
 
 /* My Expense */
+/* Figma bar geometry (card-relative): Sep top / bar bottom / month top —
+   desktop 33/175/184 (105:364) · tab 23/134/140 (150:515) · mobile 28/170/179 (181:604) */
 .my-expense__card {
+  --exp-headroom: 11px;
+  --exp-month-gap: 9px;
+  --exp-label-gap: 7px;
   height: 225px;
-  padding: 22px 25px 20px;
+  padding: 22px 25px 25px;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 
 .app-shell--tablet .my-expense__card {
+  --exp-headroom: 6px;
+  --exp-month-gap: 6px;
+  --exp-label-gap: 3px;
   height: 170px;
-  padding: 17px 18px 16px;
+  padding: 17px 18px 15px;
   border-radius: var(--radius-card);
 }
 
 .app-shell--mobile .my-expense__card {
+  --exp-headroom: 11px;
+  --exp-month-gap: 9px;
+  --exp-label-gap: 8px;
   height: 214px;
   margin: 0 25px;
-  padding: 17px 20px 16px;
+  padding: 17px 20px 20px;
+}
+
+.app-shell--mobile .my-expense__total {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+.app-shell--mobile .my-expense__month {
+  font-size: 12px;
+  line-height: 15px;
 }
 
 .my-expense__chart {
@@ -159,7 +180,6 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 8px;
-  padding-top: 4px;
 }
 
 .my-expense__col {
@@ -170,7 +190,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  gap: 10px;
+  gap: var(--exp-month-gap);
 }
 
 .my-expense__bar-stack {
@@ -182,21 +202,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  /* headroom for the amount label so the tallest (100%) bar never pushes it out */
-  padding: 23px 0 0;
+  /* the amount label is absolutely positioned and may rise into the card padding, as in Figma */
+  padding: var(--exp-headroom) 0 0;
   border: 0;
   background: none;
   font: inherit;
   cursor: pointer;
   border-radius: 10px;
-}
-
-.app-shell--tablet .my-expense__bar-stack {
-  padding-top: 21px;
-}
-
-.app-shell--desktop .my-expense__bar-stack {
-  padding-top: calc(21px + 2 * var(--f));
 }
 
 .my-expense__bar-wrap {
@@ -217,7 +229,7 @@
 
 .my-expense__total {
   position: absolute;
-  bottom: calc(100% + 6px);
+  bottom: calc(100% + var(--exp-label-gap));
   left: 50%;
   translate: -50% 0;
   margin: 0;
@@ -1012,7 +1024,10 @@
 
 /* My Expense — 170→225 card */
 .app-shell--desktop .my-expense__card {
-  padding: calc(17px + 5 * var(--f)) calc(18px + 7 * var(--f)) calc(16px + 4 * var(--f));
+  --exp-headroom: calc(6px + 5 * var(--f));
+  --exp-month-gap: calc(6px + 3 * var(--f));
+  --exp-label-gap: calc(3px + 4 * var(--f));
+  padding: calc(17px + 5 * var(--f)) calc(18px + 7 * var(--f)) calc(15px + 10 * var(--f));
 }
 
 .app-shell--desktop .my-expense__total {
