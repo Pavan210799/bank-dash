@@ -82,7 +82,7 @@ select {
   --header-h: 140px;
   --radius-card: 15px;
   --dash-gap: 24px;
-  --dash-row-gap: 24px;
+  --dash-row-gap: 22px;
 }
 
 button {

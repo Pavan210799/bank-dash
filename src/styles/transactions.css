@@ -968,7 +968,7 @@
 }
 
 .app-shell--mobile .tx-table-section {
-  margin-top: 8px;
+  margin-top: 0;
 }
 
 .app-shell--desktop .transactions-main {
@@ -1348,4 +1348,18 @@
   padding: 10px 20px;
   align-items: center;
   box-sizing: border-box;
+}
+
+/* Figma 185:39 (325×299): rows of 36px content on a 55px pitch, first at y19, divider 9px below each */
+.app-shell--mobile .tx-table-section--mobile .tx-table-card {
+  padding-top: 10px !important;
+}
+
+.app-shell--mobile .tx-table-section--mobile .tx-mobile-row {
+  min-height: 55px;
+  padding: 9px 20px 10px;
+}
+
+.app-shell--mobile .tx-table-section--mobile .tx-mobile-list {
+  padding-bottom: 14px;
 }

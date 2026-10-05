@@ -643,7 +643,7 @@ a.avatar {
 .app-shell--mobile .my-cards--transactions .my-cards__row {
   width: calc(100% + 50px) !important;
   max-width: calc(100% + 50px) !important;
-  margin: -10px -25px -22px !important;
+  margin: -10px -25px -26px !important;
   padding: 10px 25px 26px !important;
   scroll-padding-inline: 25px;
 }

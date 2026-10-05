@@ -11,8 +11,9 @@
     box-sizing: border-box;
   }
 
+  /* Figma 169:3352: 22px from a card's bottom to the next section title */
   .app-shell--mobile .dashboard-grid {
-    gap: 24px;
+    gap: 22px;
     grid-template-columns: 1fr;
     grid-template-areas:
       'cards'
@@ -23,7 +24,7 @@
   }
 
   .app-shell--mobile .dashboard-row-bottom {
-    gap: 24px;
+    gap: 22px;
     grid-template-columns: 1fr;
   }
 }
