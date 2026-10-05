@@ -148,7 +148,7 @@
 }
 
 .fx-intro .header .icon-btn { animation-delay: 0.08s; }
-.fx-intro .header .icon-btn + .icon-btn { animation-delay: 0.16s; }
+.fx-intro .header .notif .icon-btn { animation-delay: 0.16s; }
 .fx-intro .header .avatar { animation-delay: 0.24s; }
 
 .header-title {

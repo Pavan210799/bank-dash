@@ -498,6 +498,137 @@
   height: 18px;
 }
 
+/* ─── Notifications dropdown (not in Figma) ───
+   Anchored to the bell's right edge; the bell sits ≥130px from the viewport edge, so a 320px
+   panel always fits from 640px up. The transparent backdrop catches outside clicks. */
+.notif {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.notif .icon-btn[aria-expanded='true'] {
+  background-color: var(--color-white);
+  box-shadow: 0 6px 16px -8px rgba(42, 16, 36, 0.35);
+}
+
+/* Backdrop is portalled to <body> above the sidebar (z 30); the header is lifted over it so the
+   top bar and the dropdown stay sharp while the page behind blurs */
+.notif__backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(42, 16, 36, 0.18);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+  animation: notif-fade 0.22s ease-out;
+}
+
+@keyframes notif-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* The header is its own stacking context, so it gets a second veil inside it; only the bell
+   and its panel (.notif--open) sit above that veil */
+.header:has(.notif--open) {
+  z-index: 60;
+}
+
+.notif__backdrop--header {
+  position: absolute;
+  z-index: 1;
+}
+
+.notif--open {
+  z-index: 2;
+}
+
+.notif__panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  z-index: 3;
+  width: 320px;
+  max-width: calc(100vw - 32px);
+  padding: 18px 20px 26px;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  background: var(--color-white);
+  box-shadow: 0 24px 60px -18px rgba(42, 16, 36, 0.45), 0 2px 8px rgba(42, 16, 36, 0.06);
+  transform-origin: calc(100% - 20px) 0;
+  animation: notif-in 0.22s var(--fx-ease, ease-out);
+}
+
+.notif__panel::before {
+  content: '';
+  position: absolute;
+  top: -7px;
+  right: 18px;
+  width: 12px;
+  height: 12px;
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  border-top-left-radius: 3px;
+  background: var(--color-white);
+  rotate: 45deg;
+}
+
+@keyframes notif-in {
+  from { opacity: 0; translate: 0 -6px; scale: 0.96; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+.notif__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.notif__title {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 22px;
+  color: var(--color-heading);
+}
+
+.notif__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-top: 24px;
+  text-align: center;
+}
+
+.notif__empty-icon {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: var(--color-icon-bg);
+}
+
+.notif__empty-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 19px;
+  color: var(--color-heading);
+}
+
+.notif__empty-text {
+  max-width: 230px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--color-muted);
+}
+
 .avatar {
   width: 60px;
   height: 60px;

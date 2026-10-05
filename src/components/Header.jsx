@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import NotificationsMenu from './NotificationsMenu';
 
 function MenuButton({ onClick, className = '' }) {
   return (
@@ -51,9 +52,7 @@ export default function Header({ breakpoint, navMode, pageTitle = 'Overview', on
         <Link to="/settings" className="icon-btn" aria-label="Settings">
           <img src="/assets/settings-1.svg" alt="" width={25} height={25} />
         </Link>
-        <button type="button" className="icon-btn" aria-label="Notifications">
-          <img src="/assets/002-notification-1.svg" alt="" width={25} height={25} />
-        </button>
+        <NotificationsMenu />
         <Link
           to="/settings"
           className={`avatar ${isTablet ? 'avatar--tablet' : ''}`}
