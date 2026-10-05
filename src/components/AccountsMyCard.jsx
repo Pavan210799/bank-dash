@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function CreditCard({ variant }) {
   const isPrimary = variant === 'primary';
   return (
@@ -41,9 +43,9 @@ export default function AccountsMyCard() {
     <section className="section accounts-card">
       <div className="section-head">
         <h2>My Card</h2>
-        <button type="button" className="link-btn">
+        <Link to="/credit-cards" className="link-btn">
           See All
-        </button>
+        </Link>
       </div>
       <CreditCard variant="primary" />
     </section>

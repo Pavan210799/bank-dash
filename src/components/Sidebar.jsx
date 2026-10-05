@@ -36,7 +36,7 @@ export default function Sidebar({ breakpoint, navMode, mobileOpen, onClose }) {
                   onClose?.();
                 }}
               >
-                <img src={`/assets/${item.icon}`} alt="" width={25} height={25} />
+                <i className="nav-item__icon" style={{ '--icon': `url(/assets/${item.icon})` }} aria-hidden="true" />
                 <span>{item.label}</span>
               </a>
             ) : (
@@ -47,7 +47,7 @@ export default function Sidebar({ breakpoint, navMode, mobileOpen, onClose }) {
                 className={({ isActive }) => `nav-item${isActive ? ' active' : ''}`}
                 onClick={onClose}
               >
-                <img src={`/assets/${item.icon}`} alt="" width={25} height={25} />
+                <i className="nav-item__icon" style={{ '--icon': `url(/assets/${item.icon})` }} aria-hidden="true" />
                 <span>{item.label}</span>
               </NavLink>
             ),

@@ -239,7 +239,6 @@
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
-.svc-row__btn.is-active,
 .svc-row__btn:hover,
 .svc-row__btn:focus-visible {
   border-color: var(--color-primary);
@@ -368,8 +367,7 @@
   white-space: normal;
 }
 
-.app-shell--mobile .svc-row__btn,
-.app-shell--mobile .svc-row__btn.is-active {
+.app-shell--mobile .svc-row__btn {
   width: auto;
   height: auto;
   border: 0;

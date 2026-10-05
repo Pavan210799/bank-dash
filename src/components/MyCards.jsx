@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 /* variant: 'primary' | 'deep' (darker gradient, same white-on-colour styling) | 'secondary' */
 export function CreditCard({ variant }) {
   const isPrimary = variant !== 'secondary';
@@ -45,9 +47,9 @@ export default function MyCards({ variant = 'dashboard' }) {
     <section className={`section my-cards${isTransactions ? ' my-cards--transactions' : ''}`}>
       <div className="section-head">
         <h2>My Cards</h2>
-        <button type="button" className="link-btn">
+        <Link to="/credit-cards" className="link-btn">
           {isTransactions ? '+ Add Card' : 'See All'}
-        </button>
+        </Link>
       </div>
       <div className="my-cards__row">
         <CreditCard variant="primary" />

@@ -98,15 +98,15 @@ export default function BalanceHistory() {
 
   const onPointerMove = (e) => {
     const rect = plotRef.current.getBoundingClientRect();
-    const x = Math.min(Math.max(e.clientX - rect.left, 0), w);
+    const px = Math.min(Math.max(e.clientX - rect.left, 0), w);
+    const index = Math.min(Math.round(px / (w / COLUMNS)), balanceHistory.length - 1);
+    const x = (w * index) / COLUMNS;
     const y = curveYAt(x);
     if (y == null) return;
-    setHover({ x, y });
+    setHover({ x, y, index });
   };
 
-  const hoverMonth = hover
-    ? balanceHistory[Math.min(Math.floor(hover.x / (w / COLUMNS)), balanceHistory.length - 1)].month
-    : null;
+  const hoverMonth = hover ? balanceHistory[hover.index].month : null;
   const hoverValue = hover ? Math.round(Math.max(0, 800 * (1 - hover.y / (h - 1)))) : null;
   const tipEdge = hover && (hover.x < 44 ? 'start' : hover.x > w - 44 ? 'end' : null);
   const tipBelow = hover && hover.y < 52;
@@ -158,7 +158,7 @@ export default function BalanceHistory() {
                 />
 
                 <path d={scalePath(CURVE_AREA, sx, sy, top)} fill="url(#balanceFill)" />
-                <path className="balance-chart__line" ref={lineRef} d={linePath} />
+                <path className="balance-chart__line" ref={lineRef} d={linePath} pathLength={1} />
 
                 {hover && (
                   <g className="balance-chart__hover">

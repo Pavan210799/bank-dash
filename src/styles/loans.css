@@ -249,7 +249,6 @@
   transition: color 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
 }
 
-.loans-table__repay.is-active,
 .loans-table__repay:hover,
 .loans-table__repay:focus-visible {
   border-color: var(--color-primary);

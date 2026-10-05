@@ -39,7 +39,7 @@ export default function Services() {
                     <p className="svc-row__subtitle">{detail.subtitle}</p>
                   </div>
                 ))}
-                <button type="button" className={`svc-row__btn${service.active ? ' is-active' : ''}`}>
+                <button type="button" className="svc-row__btn">
                   View Details
                 </button>
               </li>

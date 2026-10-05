@@ -51,6 +51,24 @@ export default function CardExpenseStatistics() {
             );
           })}
           <circle className="cc-expense__hole" cx={CX} cy={CY} r={HOLE_R} />
+          {active && (
+            <text
+              key={active}
+              className="cc-expense__center"
+              x={CX}
+              y={CY}
+              textAnchor="middle"
+              dominantBaseline="central"
+              fill={byId[active].fill}
+            >
+              <tspan x={CX} dy="-0.45em">
+                {byId[active].label.split(' ')[0]}
+              </tspan>
+              <tspan x={CX} dy="1.2em" className="cc-expense__center-sub">
+                Bank
+              </tspan>
+            </text>
+          )}
         </svg>
 
         <ul className="cc-expense__legend">

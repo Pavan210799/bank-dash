@@ -12,7 +12,7 @@ function sliceHoverTranslate(chart, slice, active) {
   const len = Math.hypot(dx, dy) || 1;
   const scale = chart.w / 269;
   const dist = (HOVER_BASE + slice.hoverBoost) * scale;
-  return `translate(${(dx / len) * dist} ${(dy / len) * dist})`;
+  return `translate(${(dx / len) * dist}px, ${(dy / len) * dist}px)`;
 }
 
 export default function ExpenseStatistics() {
@@ -46,7 +46,7 @@ export default function ExpenseStatistics() {
                 <g
                   key={slice.key}
                   className={`expense-chart__slice${active ? ' expense-chart__slice--active' : ''}`}
-                  transform={sliceHoverTranslate(chart, slice, active)}
+                  style={{ transform: sliceHoverTranslate(chart, slice, active) }}
                   onMouseEnter={() => setHovered(i)}
                   onMouseLeave={() => setHovered(null)}
                   onFocus={() => setHovered(i)}
@@ -60,6 +60,7 @@ export default function ExpenseStatistics() {
                     fill={slice.fill}
                   />
                   <text
+                    className="expense-chart__label"
                     x={label.x}
                     y={label.y}
                     fill="#ffffff"

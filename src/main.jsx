@@ -11,6 +11,8 @@ import './styles/credit-cards.css';
 import './styles/loans.css';
 import './styles/services.css';
 import './styles/settings.css';
+import './styles/privileges.css';
+import './styles/effects.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

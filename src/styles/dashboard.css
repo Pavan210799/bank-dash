@@ -130,17 +130,20 @@
   font-size: 16px;
 }
 
-.nav-item img {
+/* Icon SVG is a mask so it paints in exact palette colours (filter recolouring renders red in
+   Safari while the hover transform animates) */
+.nav-item__icon {
+  display: block;
   width: 25px;
   height: 25px;
   flex-shrink: 0;
   opacity: 0.55;
-  filter: brightness(0) saturate(100%) invert(78%) sepia(12%) saturate(400%) hue-rotate(285deg)
-    brightness(95%) contrast(88%);
-  transition: opacity 0.18s ease, filter 0.18s ease;
+  background-color: var(--color-nav-muted);
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
 }
 
-.sidebar--tablet .nav-item img {
+.sidebar--tablet .nav-item__icon {
   width: 20px;
   height: 20px;
 }
@@ -160,12 +163,11 @@
   border-radius: 8px;
 }
 
-.nav-item.active img,
-.nav-item:hover img,
-.nav-item:focus-visible img {
+.nav-item.active .nav-item__icon,
+.nav-item:hover .nav-item__icon,
+.nav-item:focus-visible .nav-item__icon {
   opacity: 1;
-  filter: brightness(0) saturate(100%) invert(24%) sepia(89%) saturate(4500%) hue-rotate(322deg)
-    brightness(95%) contrast(101%);
+  background-color: var(--color-primary);
 }
 
 .nav-item.active::before {
@@ -715,6 +717,7 @@
   font-weight: 600;
   line-height: 21px;
   color: var(--color-heading);
+  text-decoration: none;
 }
 
 .app-shell--tablet .link-btn {
@@ -2068,7 +2071,7 @@
   font-size: calc(16px + 2 * var(--f));
 }
 
-.sidebar--desktop .nav-item img {
+.sidebar--desktop .nav-item__icon {
   width: calc(20px + 5 * var(--f));
   height: calc(20px + 5 * var(--f));
 }

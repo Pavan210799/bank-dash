@@ -105,13 +105,15 @@ export default function InvestmentsLineChart({ title, variant = 'points', values
     const rect = plotRef.current.getBoundingClientRect();
     const px = Math.min(Math.max(e.clientX - rect.left, 0), w);
     if (isCurve) {
-      const y = curveYAt(px);
+      const index = nearestYear(px);
+      const x = X_STOPS[index] * w;
+      const y = curveYAt(x);
       if (y == null) return;
       setHover({
-        x: px,
+        x,
         y,
         value: INVESTMENT_CHART_MAX * (1 - y / h),
-        year: INVESTMENT_YEARS[nearestYear(px)],
+        year: INVESTMENT_YEARS[index],
       });
     } else {
       setHover({ ...points[nearestYear(px)], index: nearestYear(px) });
@@ -155,7 +157,7 @@ export default function InvestmentsLineChart({ title, variant = 'points', values
                 ))}
               </g>
 
-              <path className="investments-chart__line" ref={lineRef} d={linePath} />
+              <path className="investments-chart__line" ref={lineRef} d={linePath} pathLength={1} />
 
               {!isCurve &&
                 points.map((p, i) => (

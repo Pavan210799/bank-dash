@@ -37,7 +37,7 @@ export default function Loans() {
               </span>
             </div>
 
-            {activeLoans.map((loan, i) => (
+            {activeLoans.map((loan) => (
               <div key={loan.id} className="loans-table__row" role="row">
                 {COLUMNS.map((col) => (
                   <span key={col.key} className={`loans-table__cell loans-table__cell--${col.key}`} role="cell">
@@ -45,7 +45,7 @@ export default function Loans() {
                   </span>
                 ))}
                 <span className="loans-table__cell loans-table__cell--repay" role="cell">
-                  <button type="button" className={`loans-table__repay${i === 0 ? ' is-active' : ''}`}>
+                  <button type="button" className="loans-table__repay">
                     Repay
                   </button>
                 </span>
