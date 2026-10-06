@@ -73,7 +73,7 @@ export default function Settings() {
           ))}
         </div>
 
-        <div className={`set-panel set-panel--${tab}`} role="tabpanel">
+        <div key={tab} className={`set-panel set-panel--${tab} set-panel-in`} role="tabpanel">
           {tab === 'profile' && (
             <div className="set-profile">
               <div className="set-avatar">
