@@ -13,6 +13,7 @@ import './styles/services.css';
 import './styles/settings.css';
 import './styles/privileges.css';
 import './styles/effects.css';
+import './styles/splash.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

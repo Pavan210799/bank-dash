@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
@@ -8,22 +9,29 @@ import Loans from './pages/Loans';
 import Services from './pages/Services';
 import Settings from './pages/Settings';
 import Privileges from './pages/Privileges';
+import SplashScreen from './components/SplashScreen';
 
 export default function App() {
+  // pages mount after the splash so the skeleton plays in view
+  const [ready, setReady] = useState(false);
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/transactions" element={<Transactions />} />
-        <Route path="/accounts" element={<Accounts />} />
-        <Route path="/investments" element={<Investments />} />
-        <Route path="/credit-cards" element={<CreditCards />} />
-        <Route path="/loans" element={<Loans />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/privileges" element={<Privileges />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
+      <SplashScreen onDone={() => setReady(true)} />
+      {ready && (
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/accounts" element={<Accounts />} />
+          <Route path="/investments" element={<Investments />} />
+          <Route path="/credit-cards" element={<CreditCards />} />
+          <Route path="/loans" element={<Loans />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/privileges" element={<Privileges />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }
