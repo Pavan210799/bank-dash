@@ -1,9 +1,18 @@
+/* only the main area scrolls, sidebar and header stay put */
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
 .app-shell {
   display: flex;
   align-items: stretch;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   background: var(--color-bg);
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .app-shell--tablet {
@@ -20,11 +29,22 @@
 
 .app-content {
   flex: 1;
+  height: 100%;
   min-width: 0;
+  min-height: 0;
   display: flex;
   flex-direction: column;
-  min-height: 100%;
+  overflow: hidden;
+}
+
+/* gutter is reserved so content doesn't jump when the scrollbar shows up */
+.app-content > main {
+  flex: 1;
+  min-height: 0;
   overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  overscroll-behavior: contain;
 }
 
 .sidebar-backdrop {
@@ -43,8 +63,9 @@
 .sidebar--desktop,
 .sidebar--tablet {
   align-self: stretch;
-  min-height: 100vh;
-  height: auto;
+  height: 100%;
+  min-height: 0;
+  overflow-y: auto;
 }
 
 .sidebar--desktop {

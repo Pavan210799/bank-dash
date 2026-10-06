@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Header from '../components/Header';
 import PageSkeleton from '../components/PageSkeleton';
 import Sidebar from '../components/Sidebar';
@@ -13,6 +14,14 @@ export default function AppShell({ pageTitle, children, mainClassName = 'dashboa
   const [introShell] = useState(() => firstPaint);
   const breakpoint = useBreakpoint();
   const navMode = useNavMode();
+  const mainRef = useRef(null);
+  const { pathname } = useLocation();
+
+  // every page opens at the top
+  useLayoutEffect(() => {
+    mainRef.current?.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   useEffect(() => {
     firstPaint = false;
@@ -37,7 +46,7 @@ export default function AppShell({ pageTitle, children, mainClassName = 'dashboa
           pageTitle={pageTitle}
           onMenuClick={() => setMobileNavOpen(true)}
         />
-        <main className={`${mainClassName}${loading ? ' is-loading' : ' fx-enter'}`}>
+        <main ref={mainRef} className={`${mainClassName}${loading ? ' is-loading' : ' fx-enter'}`}>
           {loading ? <PageSkeleton pageTitle={pageTitle} /> : children}
         </main>
       </div>

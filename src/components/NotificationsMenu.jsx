@@ -1,15 +1,14 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
+// stop the main area from scrolling while the dropdown is open
 function lockPageScroll() {
-  const root = document.documentElement;
-  const scrollbar = window.innerWidth - root.clientWidth;
-  const prev = { overflow: root.style.overflow, paddingRight: root.style.paddingRight };
-  root.style.overflow = 'hidden';
-  if (scrollbar > 0) root.style.paddingRight = `${scrollbar}px`;
+  const main = document.querySelector('.app-content > main');
+  if (!main) return () => {};
+  const prev = main.style.overflowY;
+  main.style.overflowY = 'hidden';
   return () => {
-    root.style.overflow = prev.overflow;
-    root.style.paddingRight = prev.paddingRight;
+    main.style.overflowY = prev;
   };
 }
 
